@@ -339,7 +339,7 @@ export const Settings = cleanEnv(process.env, {
   }),
 
   COMET_URL: url({
-    default: 'https://comet.elfhosted.com/',
+    default: 'https://comet.stremiofr.com/',
     desc: 'Comet URL',
   }),
   COMET_INDEXERS: json({
@@ -392,7 +392,7 @@ export const Settings = cleanEnv(process.env, {
 
   // Jackettio settings
   JACKETTIO_URL: url({
-    default: 'https://jackettio.elfhosted.com/',
+    default: 'https://jackettio.stremiofr.com/',
     desc: 'Jackettio URL',
   }),
   DEFAULT_JACKETTIO_INDEXERS: json({
@@ -598,5 +598,14 @@ export const Settings = cleanEnv(process.env, {
   DEFAULT_GDRIVE_USER_AGENT: userAgent({
     default: undefined,
     desc: 'Default GDrive user agent',
+  }),
+  // StreamFusion settings
+  STREAMFUSION_URL: url({
+    default: 'https://stream-fusion.stremiofr.com/',
+    desc: 'StreamFusion URL',
+  }),
+  DEFAULT_STREAMFUSION_TIMEOUT: num({
+    default: undefined,
+    desc: 'Default StreamFusion timeout',
   }),
 });

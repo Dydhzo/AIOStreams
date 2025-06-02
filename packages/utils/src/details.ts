@@ -3,26 +3,99 @@ import { Settings } from './settings';
 
 export const addonDetails: AddonDetail[] = [
   {
-    name: 'Torrentio',
-    id: 'torrentio',
+    name: 'StreamFusion',
+    id: 'streamfusion',
     requiresService: false,
     supportedServices: [
       'realdebrid',
       'alldebrid',
       'premiumize',
-      'debridlink',
       'torbox',
-      'offcloud',
-      'putio',
+      'debridlink',
       'easydebrid',
+      'offcloud',
+      'pikpak',
     ],
     options: [
+      {
+        id: 'prioritiseDebrid',
+        required: false,
+        label: 'Prioritise Debrid Service',
+        description:
+          'Prioritise a specific debrid service when fetching streams. This option is useful when you want to use a specific debrid service for fetching streams. By default, the addon will make a separate request for each debrid service. I highly recommend providing a value for this option as it will speed up the fetching process and remove redundant results.',
+        type: 'select',
+        options: [
+          { value: 'realdebrid', label: 'Real Debrid' },
+          { value: 'alldebrid', label: 'All Debrid' },
+          { value: 'premiumize', label: 'Premiumize' },
+          { value: 'torbox', label: 'TorBox' },
+          { value: 'debridlink', label: 'Debrid Link' },
+          { value: 'easydebrid', label: 'EasyDebrid' },
+          { value: 'offcloud', label: 'Offcloud' },
+          { value: 'pikpak', label: 'PikPak' },
+        ],
+      },
       {
         id: 'overrideName',
         required: false,
         label: 'Override Addon Name',
         description:
-          'Override the name of the Torrentio addon that shows up in the results',
+          'Override the name of the StreamFusion addon that shows up in the results',
+        type: 'text',
+      },
+      {
+        id: 'indexerTimeout',
+        required: false,
+        label: 'Override Indexer Timeout',
+        description:
+          'The timeout for fetching streams from the StreamFusion addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
+        type: 'number',
+        constraints: {
+          min: Settings.MIN_TIMEOUT,
+          max: Settings.MAX_TIMEOUT,
+        },
+      },
+    ],
+  },
+  {
+    name: 'Jackettio',
+    id: 'jackettio',
+    requiresService: true,
+    supportedServices: [
+      'torbox',
+      'easydebrid',
+      'realdebrid',
+      'debridlink',
+      'alldebrid',
+      'premiumize',
+      'offcloud',
+      'pikpak',
+    ],
+    options: [
+      {
+        id: 'prioritiseDebrid',
+        required: false,
+        label: 'Prioritise Debrid Service',
+        description:
+          'Prioritise a specific debrid service when fetching streams. This option is useful when you want to use a specific debrid service for fetching streams. By default, the addon will make a separate request for each debrid service. I highly recommend provding a value for this option as it will speed up the fetching process and remove redundant results.',
+        type: 'select',
+        options: [
+          { value: 'torbox', label: 'Torbox' },
+          { value: 'easydebrid', label: 'EasyDebrid' },
+          { value: 'realdebrid', label: 'Real Debrid' },
+          { value: 'debridlink', label: 'Debrid Link' },
+          { value: 'alldebrid', label: 'All Debrid' },
+          { value: 'premiumize', label: 'Premiumize' },
+          { value: 'offcloud', label: 'Offcloud' },
+          { value: 'pikpak', label: 'PikPak' },
+        ],
+      },
+      {
+        id: 'overrideName',
+        required: false,
+        label: 'Override Addon Name',
+        description:
+          'Override the name of the Jackettio addon that shows up in the results',
         type: 'text',
       },
       {
@@ -31,25 +104,15 @@ export const addonDetails: AddonDetail[] = [
         required: false,
         label: 'Override URL',
         description:
-          'Override the URL used to fetch streams from the torrentio addon. This option is incompatible with the useMultipleInstances option. By default, the URL is generated based on the selected services and their credentials. Use this option to override the URL with a custom URL.',
+          'Override the URL used to fetch streams from the Jackettio addon. This option is incompatible with the prioritiseDebrid option. By default, the URL is generated based on the selected services and their credentials. Use this option to override the URL with a custom URL.',
         type: 'text',
-      },
-      {
-        id: 'useMultipleInstances',
-        required: false,
-        label: 'Use Multiple Instances',
-        description:
-          "Torrentio supports multiple services. By default, AIOStreams will pass all services to Torrentio. However, Torrentio has its\
-          own service priority system which can't be overriden. If you want to use a custom priority system for your services, you can enable this option.\
-          to create a separate request for each service.",
-        type: 'checkbox',
       },
       {
         id: 'indexerTimeout',
         required: false,
         label: 'Override Indexer Timeout',
         description:
-          'The timeout for fetching streams from the Torrentio addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
+          'The timeout for fetching streams from the Jackettio addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
         type: 'number',
         constraints: {
           min: Settings.MIN_TIMEOUT,
@@ -114,6 +177,62 @@ export const addonDetails: AddonDetail[] = [
         label: 'Override Indexer Timeout',
         description:
           'The timeout for fetching streams from the Comet addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
+        type: 'number',
+        constraints: {
+          min: Settings.MIN_TIMEOUT,
+          max: Settings.MAX_TIMEOUT,
+        },
+      },
+    ],
+  },
+  {
+    name: 'Torrentio',
+    id: 'torrentio',
+    requiresService: false,
+    supportedServices: [
+      'realdebrid',
+      'alldebrid',
+      'premiumize',
+      'debridlink',
+      'torbox',
+      'offcloud',
+      'putio',
+      'easydebrid',
+    ],
+    options: [
+      {
+        id: 'overrideName',
+        required: false,
+        label: 'Override Addon Name',
+        description:
+          'Override the name of the Torrentio addon that shows up in the results',
+        type: 'text',
+      },
+      {
+        id: 'overrideUrl',
+        secret: true,
+        required: false,
+        label: 'Override URL',
+        description:
+          'Override the URL used to fetch streams from the torrentio addon. This option is incompatible with the useMultipleInstances option. By default, the URL is generated based on the selected services and their credentials. Use this option to override the URL with a custom URL.',
+        type: 'text',
+      },
+      {
+        id: 'useMultipleInstances',
+        required: false,
+        label: 'Use Multiple Instances',
+        description:
+          "Torrentio supports multiple services. By default, AIOStreams will pass all services to Torrentio. However, Torrentio has its\
+          own service priority system which can't be overriden. If you want to use a custom priority system for your services, you can enable this option.\
+          to create a separate request for each service.",
+        type: 'checkbox',
+      },
+      {
+        id: 'indexerTimeout',
+        required: false,
+        label: 'Override Indexer Timeout',
+        description:
+          'The timeout for fetching streams from the Torrentio addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
         type: 'number',
         constraints: {
           min: Settings.MIN_TIMEOUT,
@@ -288,70 +407,6 @@ export const addonDetails: AddonDetail[] = [
         label: 'Override Indexer Timeout',
         description:
           'The timeout for fetching streams from the Stremio Jackett addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
-        type: 'number',
-        constraints: {
-          min: Settings.MIN_TIMEOUT,
-          max: Settings.MAX_TIMEOUT,
-        },
-      },
-    ],
-  },
-  {
-    name: 'Jackettio',
-    id: 'jackettio',
-    requiresService: true,
-    supportedServices: [
-      'torbox',
-      'easydebrid',
-      'realdebrid',
-      'debridlink',
-      'alldebrid',
-      'premiumize',
-      'offcloud',
-      'pikpak',
-    ],
-    options: [
-      {
-        id: 'prioritiseDebrid',
-        required: false,
-        label: 'Prioritise Debrid Service',
-        description:
-          'Prioritise a specific debrid service when fetching streams. This option is useful when you want to use a specific debrid service for fetching streams. By default, the addon will make a separate request for each debrid service. I highly recommend provding a value for this option as it will speed up the fetching process and remove redundant results.',
-        type: 'select',
-        options: [
-          { value: 'torbox', label: 'Torbox' },
-          { value: 'easydebrid', label: 'EasyDebrid' },
-          { value: 'realdebrid', label: 'Real Debrid' },
-          { value: 'debridlink', label: 'Debrid Link' },
-          { value: 'alldebrid', label: 'All Debrid' },
-          { value: 'premiumize', label: 'Premiumize' },
-          { value: 'offcloud', label: 'Offcloud' },
-          { value: 'pikpak', label: 'PikPak' },
-        ],
-      },
-      {
-        id: 'overrideName',
-        required: false,
-        label: 'Override Addon Name',
-        description:
-          'Override the name of the Jackettio addon that shows up in the results',
-        type: 'text',
-      },
-      {
-        id: 'overrideUrl',
-        secret: true,
-        required: false,
-        label: 'Override URL',
-        description:
-          'Override the URL used to fetch streams from the Jackettio addon. This option is incompatible with the prioritiseDebrid option. By default, the URL is generated based on the selected services and their credentials. Use this option to override the URL with a custom URL.',
-        type: 'text',
-      },
-      {
-        id: 'indexerTimeout',
-        required: false,
-        label: 'Override Indexer Timeout',
-        description:
-          'The timeout for fetching streams from the Jackettio addon. This is the time in milliseconds that the addon will wait for a response before timing out. Leave it empty to use the recommended timeout.',
         type: 'number',
         constraints: {
           min: Settings.MIN_TIMEOUT,
@@ -1045,6 +1100,20 @@ export const serviceDetails = [
         label: 'API Key',
         id: 'apiKey',
         link: 'https://panel.orionoid.com/',
+      },
+    ],
+  },
+  {
+    name: 'StreamFusion',
+    id: 'streamfusion',
+    shortName: 'SF',
+    knownNames: ['SF', 'Stream Fusion', 'StreamFusion', 'Stream-Fusion'],
+    signUpLink: 'https://stream-fusion.stremiofr.com/',
+    credentials: [
+      {
+        label: 'API Key',
+        id: 'apiKey',
+        link: 'https://stream-fusion.stremiofr.com/',
       },
     ],
   },

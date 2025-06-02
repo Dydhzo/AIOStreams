@@ -14,6 +14,7 @@ import {
   getStremThruStoreStreams,
   getTorboxStreams,
   getTorrentioStreams,
+  getStreamFusionStreams,
 } from '@aiostreams/wrappers';
 import {
   Stream,
@@ -1243,6 +1244,14 @@ export class AIOStreams {
       }
       case 'stremthru-store': {
         return await getStremThruStoreStreams(
+          this.config,
+          addon.options,
+          streamRequest,
+          addonId
+        );
+      }
+      case 'streamfusion': {
+        return await getStreamFusionStreams(
           this.config,
           addon.options,
           streamRequest,

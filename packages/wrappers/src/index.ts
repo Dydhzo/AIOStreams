@@ -13,3 +13,5 @@ export * from './peerflix';
 export * from './dmmCast';
 export * from './stremio-jackett';
 export * from './stremthruStore';
+
+export * from './streamfusion';
