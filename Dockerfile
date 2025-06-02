@@ -16,6 +16,8 @@ COPY packages/frontend/package*.json ./packages/frontend/
 COPY packages/utils/package*.json ./packages/utils/
 
 # Install dependencies.
+# Install Git as it might be required for some npm packages.
+RUN apk add --no-cache git
 RUN npm install
 
 # Copy source files.
