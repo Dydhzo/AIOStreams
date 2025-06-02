@@ -51,6 +51,7 @@ AIOStreams consolidates multiple Stremio addons and debrid services into a singl
 
 AIOStreams integrates results from, and has automated configuration for, the following addons:
 
+- Stream-Fusion
 - Torrentio
 - MediaFusion
 - Comet
