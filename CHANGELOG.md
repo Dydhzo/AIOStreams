@@ -14,5 +14,11 @@ Elle introduit également un **gestionnaire intégré d’extensions**, des **fi
 
 ---
 
+### ⚠️ Important : migration vers la v2  
+Pour bien comprendre comment migrer, configurer et profiter de toutes les nouveautés, consultez attentivement le guide officiel :  
+👉 [Guide de migration v1 → v2](https://github.com/Viren070/AIOStreams/wiki/Migrate-to-V2)
+
+---
+
 📘 **Pour consulter la liste complète des nouveautés :**  
 👉 [Release AIOStreams v2.0.0 sur GitHub](https://github.com/Viren070/AIOStreams/releases/tag/v2.0.0)
