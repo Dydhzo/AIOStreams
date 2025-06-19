@@ -590,7 +590,7 @@ export const Env = cleanEnv(process.env, {
   }),
 
   COMET_URL: url({
-    default: 'https://comet.elfhosted.com',
+    default: 'https://comet.stremiofr.com',
     desc: 'Comet URL',
   }),
   FORCE_COMET_HOSTNAME: host({
@@ -643,7 +643,7 @@ export const Env = cleanEnv(process.env, {
 
   // Jackettio settings
   JACKETTIO_URL: url({
-    default: 'https://jackettio.elfhosted.com',
+    default: 'https://jackettio.stremiofr.com',
     desc: 'Jackettio URL',
   }),
   DEFAULT_JACKETTIO_INDEXERS: json({
